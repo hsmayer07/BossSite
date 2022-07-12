@@ -1,13 +1,16 @@
 import dash
 import dash_labs as dl
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 
 
-app = dash.Dash(
+app = Dash(
     __name__, plugins=[dl.plugins.pages], external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 
-navbar = dbc.NavbarSimple(
+
+
+topbar = dbc.NavbarSimple(
     dbc.DropdownMenu(
         [
             dbc.DropdownMenuItem(page["name"], href=page["path"])
@@ -24,7 +27,7 @@ navbar = dbc.NavbarSimple(
 )
 
 app.layout = dbc.Container(
-    [navbar, dl.plugins.page_container],
+    [topbar, dl.plugins.page_container],
     fluid=True,
 )
 
