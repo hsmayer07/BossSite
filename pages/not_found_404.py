@@ -1,8 +1,6 @@
+import dash
 from dash import html
 
-from dash_labs.plugins import register_page
+dash.register_page(__name__, path="/404")
 
-register_page(__name__, path="/404")
-
-
-layout = html.H1("Custom 404")
+layout = html.H1("This is our custom 404 content")
