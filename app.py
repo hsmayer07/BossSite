@@ -5,7 +5,8 @@ import dash
 app = Dash(__name__, use_pages=True)
 
 app.layout = html.Div([
-	html.H1('Multi-page app with Dash Pages'),
+
+	html.H1('BOSS CLUB', style = {'display': 'inline-block'}),
 	dcc.Link(html.Button("Calendar"), href="/calendar", refresh=True),
 	dcc.Link(html.Button("About"), href="/about", refresh=True),
 	dcc.Link(html.Button("Suggestions"), href="/suggestions", refresh=True),
