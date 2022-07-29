@@ -2,9 +2,15 @@ from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
 import dash
 
+
+
+
 app = Dash(__name__, use_pages=True)
 
-app.layout = html.Div([
+
+
+app.layout = html.Div(
+	children = [
 
 	html.H1('BOSS CLUB', style = {'display': 'inline-block'}),
 	dcc.Link(html.Button("Calendar"), href="/calendar", refresh=True),
