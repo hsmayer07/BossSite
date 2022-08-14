@@ -6,10 +6,11 @@ from authlib.integrations.flask_client import OAuth
 import os
 from dash.dependencies import Input, Output, State
 import sqlite3
-from db import init_db_command
+import db
 from users import User
+import smtplib
 
-app = Dash(__name__, use_pages=True)
+app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True)
 server = app.server
 server.secret_key = 'ertuyiokploiuygtfre'
 
@@ -25,12 +26,12 @@ server.config['SERVER_NAME'] = '127.0.0.1:5000'
 oauth = OAuth(server)
 
 try:
-    init_db_command()
+	db.init_db_command();
 except sqlite3.OperationalError:
-    # Assume it's already been created
-    pass
+	pass
 
-
+print(globals())
+#app.dump()
 app.layout = html.Div(
 	children = [
 	html.H1('BOSS CLUB', style = {'display': 'inline-block', 'margin-left': '4%', 'margin-right':'4%'}),
@@ -97,10 +98,25 @@ def google():
 def google_auth():
     token = oauth.google.authorize_access_token()
     user = oauth.google.parse_id_token(token, 0)
-
-    print(type(token));
-#return redirect('/')
+	#return redirect('/')
     return user.name
+
+@app.callback(
+	Output('suggestions_box', "value"),
+	Input('submit_button', 'n_clicks'),
+	State('suggestions_box', 'value'))
+def handle_input(fuck, you):
+	with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+		smtp.ehlo();
+		smtp.starttls();
+		smtp.ehlo();
+		subject = 'New BOSS suggestion';
+		smtp.login('mahadkhalid4955@gmail.com','etmwfqvkoeeaeval');
+		msg = f'Subject: {fuck}\n\n{you}';
+		smtp.sendmail('mahadkhalid4955@gmail.com', 'mahadkhalid4955@gmail.com', msg);
+		print("added!")
+		return 'Thanks for adding a suggestion!';
+
 
 if __name__ == '__main__':
 	app.run_server(debug=True,port=5000)
