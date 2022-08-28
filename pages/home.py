@@ -56,7 +56,7 @@ layout = html.Div(
         html.H3(children = "FOOD FINDERS")
     ], style = {'display' : 'inline-block','margin-top':'37%', 'float' : 'right', "border":"2px black solid", 'width':'30%', 'padding-left':'3%', 'margin-right':'4%'})
 
-], style = {'margin-top' : '3%'})
+], style = {'margin-top' : '3%', 'background-image': 'url("/assets/background.png")'})
 
 
 #
