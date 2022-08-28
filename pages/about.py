@@ -21,7 +21,8 @@ layout = html.Div([
                 'width':'30%',
                 'height':'500%',
                 'display':'inline-block',
-                "border":"2px black solid"
+                "border":"2px black solid",
+                'margin-top':'2%'
                 }),
         html.Div(children=[
             html.H3("Our Purpose"),

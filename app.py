@@ -30,7 +30,6 @@ try:
 except sqlite3.OperationalError:
 	pass
 
-print(globals())
 #app.dump()
 app.layout = html.Div(
 	children = [
@@ -60,8 +59,6 @@ def google():
 
     # Redirect to google_auth function
     redirect_uri = url_for('google_auth', _external=True)
-    print(redirect_uri);
-    print(GOOGLE_CLIENT_ID);
     return oauth.google.authorize_redirect(redirect_uri)
 
 @server.route('/google/auth/')
@@ -84,7 +81,6 @@ def handle_input(fuck, you):
 		smtp.login('mahadkhalid4955@gmail.com','etmwfqvkoeeaeval');
 		msg = f'Subject: {fuck}\n\n{you}';
 		smtp.sendmail('mahadkhalid4955@gmail.com', 'mahadkhalid4955@gmail.com', msg);
-		print("added!")
 		return 'Thanks for adding a suggestion!';
 
 
