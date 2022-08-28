@@ -15,22 +15,22 @@ layout = html.Div([
     html.Div(id='suggestions_box_output', style={'whiteSpace': 'pre-line'})
     ])
 
-@callback(
-        Output('suggestions_box', "value"),
-        Input('submit_button', 'n_clicks'),
-        State('suggestions_box', 'value')
-        )
-
-def update_output(n_clicks, value):
-    if n_clicks > 0:
-
-        with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-            smtp.ehlo()
-            smtp.starttls()
-            smtp.ehlo()
-
-            subject = 'New BOSS suggestion'
-            smtp.login('mahadkhalid4955@gmail.com','etmwfqvkoeeaeval')
-            msg = f'Subject: {subject}\n\n{value}'
-            smtp.sendmail('mahadkhalid4955@gmail.com', 'mahadkhalid4955@gmail.com', msg)
-            return 'Thanks for adding a suggestion!'
+# @callback(
+#         Output('suggestions_box', "value"),
+#         Input('submit_button', 'n_clicks'),
+#         State('suggestions_box', 'value')
+#         )
+#
+# def update_output(n_clicks, value):
+#     if n_clicks > 0:
+#
+#         with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
+#             smtp.ehlo()
+#             smtp.starttls()
+#             smtp.ehlo()
+#
+#             subject = 'New BOSS suggestion'
+#             smtp.login('mahadkhalid4955@gmail.com','etmwfqvkoeeaeval')
+#             msg = f'Subject: {subject}\n\n{value}'
+#             smtp.sendmail('mahadkhalid4955@gmail.com', 'mahadkhalid4955@gmail.com', msg)
+#             return 'Thanks for adding a suggestion!'
